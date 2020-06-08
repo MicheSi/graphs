@@ -72,9 +72,9 @@ class Graph:
         s.push(starting_vertex)
 		# Create a Set to store visited vertices
         visited = set()
-		# While the queue is not empty...
+		# While the stack is not empty...
         while s.size() > 0:
-			# Dequeue the first vert
+			# Pop the first vert
             vert = s.pop()
 			# If that vertex has not been visited...
             if vert not in visited:
@@ -137,7 +137,34 @@ class Graph:
         starting_vertex to destination_vertex in
         depth-first order.
         """
-        pass  # TODO
+        # initialize empty list
+        path = []
+        # create empty stack
+        s = Stack()
+        # add starting vertex to stack
+        s.push(starting_vertex)
+        # create set to store visited verts
+        visited = set()
+        # while stack not empty
+        while s.size() > 0:
+            # pop last vert
+            vert = s.pop()
+            # if vert has not been visited
+            if vert not in visited:
+                # visit and print
+                print(vert)
+                # mark as visited
+                visited.add(vert)
+                # add to path list
+                path.append(vert)
+                # if vert is target
+                if vert == destination_vertex:
+                    # return the path
+                    return path
+                # add neighbors to top of stack
+                for neighbors in self.get_neighbors(vert):
+                    s.push(neighbors)
+
 
     def dfs_recursive(self, starting_vertex, destination_vertex):
         """
