@@ -66,30 +66,24 @@ class Graph:
         Print each vertex in depth-first order
         beginning from starting_vertex.
         """
-        # Create an empty queue and enqueue A PATH TO the starting vertex ID
-        path = []
+        # create empty stack
         s = Stack()
+        # add starting vertex to stack
         s.push(starting_vertex)
 		# Create a Set to store visited vertices
         visited = set()
 		# While the queue is not empty...
         while s.size() > 0:
-			# Dequeue the first PATH
+			# Dequeue the first vert
             vert = s.pop()
-			# Grab the last vertex from the PATH
 			# If that vertex has not been visited...
             if vert not in visited:
-				# CHECK IF IT'S THE TARGET
-                if vert == path:
-				  # IF SO, RETURN PATH
-                  return path
-                  print(vert)
+                # visit and print
+                print(vert)
 				# Mark it as visited...
                 visited.add(vert)
-				# Then add A PATH TO its neighbors to the back of the queue
+				# add neighbors to stack
                 for next_vert in self.get_neighbors(vert):
-				  # COPY THE PATH
-				  # APPEND THE NEIGHOR TO THE BACK
                   s.push(next_vert)
 
     def dft_recursive(self, starting_vertex):
