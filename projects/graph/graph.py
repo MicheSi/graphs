@@ -20,9 +20,9 @@ class Graph:
         Add a directed edge to the graph.
         """
         # if both vertices are in the graph
-        if v1 is self.vertices and v2 in self.vertices:
+        if v1 in self.vertices and v2 in self.vertices:
             # add v2 as a neighbor to v1
-            self.vertices[v1].add[v2]
+            self.vertices[v1].add(v2)
         # v1 and v2 do not exist
         else:
             # give an error message
@@ -57,8 +57,8 @@ class Graph:
                 # mark it as visited
                 visited.add(vert)
             # add neighbors to back of queue
-            for next_vert in self.get_neighbors(vert):
-                q.enqueue(next_vert)
+                for next_vert in self.get_neighbors(vert):
+                    q.enqueue(next_vert)
 
 
     def dft(self, starting_vertex):
