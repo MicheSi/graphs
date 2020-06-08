@@ -32,21 +32,65 @@ class Graph:
         """
         Get all neighbors (edges) of a vertex.
         """
-        pass  # TODO
+        # returns the neighbors of the specified vertex
+        return self.vertices[vertex_id]
 
     def bft(self, starting_vertex):
         """
         Print each vertex in breadth-first order
         beginning from starting_vertex.
         """
-        pass  # TODO
+        # create an empty queue
+        q = Queue()
+        # enqueue the starting vertex id
+        q.enqueue(starting_vertex)
+        # create a set() to store visited verts
+        visited = set()
+        # while queue is not empty
+        while q.size() > 0:
+            # dequeue the 1st vert
+            vert = q.dequeue()
+            # if vert has not been visited
+            if vert not in visited:
+                # visit it and print
+                print(vert)
+                # mark it as visited
+                visited.add(vert)
+            # add neighbors to back of queue
+            for next_vert in self.get_neighbors(vert):
+                q.enqueue(next_vert)
+
 
     def dft(self, starting_vertex):
         """
         Print each vertex in depth-first order
         beginning from starting_vertex.
         """
-        pass  # TODO
+        # Create an empty queue and enqueue A PATH TO the starting vertex ID
+        path = []
+        s = Stack()
+        s.push(starting_vertex)
+		# Create a Set to store visited vertices
+        visited = set()
+		# While the queue is not empty...
+        while s.size() > 0:
+			# Dequeue the first PATH
+            vert = s.pop()
+			# Grab the last vertex from the PATH
+			# If that vertex has not been visited...
+            if vert not in visited:
+				# CHECK IF IT'S THE TARGET
+                if vert == path:
+				  # IF SO, RETURN PATH
+                  return path
+                  print(vert)
+				# Mark it as visited...
+                visited.add(vert)
+				# Then add A PATH TO its neighbors to the back of the queue
+                for next_vert in self.get_neighbors(vert):
+				  # COPY THE PATH
+				  # APPEND THE NEIGHOR TO THE BACK
+                  s.push(next_vert)
 
     def dft_recursive(self, starting_vertex):
         """
