@@ -93,9 +93,18 @@ class Graph:
 
         This should be done using recursion.
         """
-        pass
-
-
+        # create set to store verts
+        visited = set()
+        # create path from get_neighbors method
+        path = self.get_neighbors(starting_vertex)
+        # add starting vertex to visited
+        visited.add(starting_vertex)
+        # print starting vertex
+        print(starting_vertex)
+        # loop through next verts
+        for next_vert in path - visited:
+            self.dft_recursive(next_vert, visited)
+        return visited
 
 
     def bfs(self, starting_vertex, destination_vertex):
@@ -174,7 +183,7 @@ class Graph:
 
         This should be done using recursion.
         """
-        pass  # TODO
+        pass
 
 if __name__ == '__main__':
     graph = Graph()  # Instantiate your graph
