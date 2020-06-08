@@ -86,15 +86,17 @@ class Graph:
                 for next_vert in self.get_neighbors(vert):
                   s.push(next_vert)
 
-    def dft_recursive(self, starting_vertex):
+    def dft_recursive(self, starting_vertex, visited=None):
         """
         Print each vertex in depth-first order
         beginning from starting_vertex.
 
         This should be done using recursion.
         """
-        # create set to store verts
-        visited = set()
+        # base case
+        if visited is None:
+            # create set to store visited verts
+            visited = set()
         # create path from get_neighbors method
         path = self.get_neighbors(starting_vertex)
         # add starting vertex to visited
