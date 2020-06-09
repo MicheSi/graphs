@@ -163,7 +163,7 @@ class Graph:
             # if vert has not been visited
             if vert not in visited:
                 # visit and print
-                print(vert)
+                # print(vert)
                 # mark as visited
                 visited.add(vert)
                 # add to path list
@@ -196,12 +196,15 @@ class Graph:
         visited.add(starting_vertex)
         # make copy of the path
         path = path + [starting_vertex]
-
+        # if starting vert is destination vert
         if starting_vertex == destination_vertex:
+            # path is starting vert
             return path
-
+        # loop through neighbors of vert
         for neighbor in self.vertices[starting_vertex]:
+            # if neighbor vert has not been visited
             if neighbor not in visited:
+                # recurse - add it to the new path
                 new_path = self.dfs_recursive(neighbor, destination_vertex, visited, path)
                 if new_path:
                     return new_path
