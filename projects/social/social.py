@@ -94,12 +94,20 @@ class SocialGraph:
             if vert not in visited:
                 # add that vert to path
                 visited[vert] = path
-            # add path to friendships
+            # loop through friendships
             for f in self.friendships[vert]:
                 path_copy = list(path)
+                # add friendship to copy of path
                 path_copy.append(f)
-                q.enqueue(path_copy)
-
+                # check if f has been visited
+                if f not in visited:
+                    # if not, add copt of path to queue
+                    q.enqueue(path_copy)
+                # if length of copy of path less than length of index of friendship in visited
+                elif len(path_copy) < len(visited[f]):
+                    # that index is new copy of path
+                    visited[f] = path_copy
+        # return visited dictionary
         return visited
 
 
