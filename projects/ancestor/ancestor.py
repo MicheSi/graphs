@@ -41,14 +41,15 @@ def earliest_ancestor(ancestors, starting_node):
             # grab vert from last index in path
             vert = path[-1]
 
-            # loop through parents
+            # loop through parents (neighbors) of vert
             for parent in g.get_neighbors(vert):
                 # copy the path
                 new_path = list(path)
-                # append parent to back
+                # append parent to back of path copy
                 new_path.append(parent)
-                # add copy of path
+                # add copy of path to end of queue
                 q.enqueue(new_path)
+        # return vert which should be earliest ancestor (last index in path)
         return vert
 
 
@@ -72,3 +73,5 @@ def earliest_ancestor(ancestors, starting_node):
 if __name__ == '__main__':
     test_ancestors = [(1, 3), (2, 3), (3, 6), (5, 6), (5, 7), (4, 5), (4, 8), (8, 9), (11, 8), (10, 1)]
     print(earliest_ancestor(test_ancestors, 3))
+    print(earliest_ancestor(test_ancestors, 8))
+    print(earliest_ancestor(test_ancestors, 9))
